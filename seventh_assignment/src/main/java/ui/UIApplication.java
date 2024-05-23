@@ -11,7 +11,7 @@ public class UIApplication extends Application {
     public static Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(UIApplication.class.getResource("UI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(UIApplication.class.getResource("mainPageUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setResizable(false);
         stage.setTitle("GroupChat");
