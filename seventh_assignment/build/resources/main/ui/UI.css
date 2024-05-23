@@ -1,45 +1,27 @@
-#Button{
-    -fx-border-color: red;
-    -fx-background-color: black;
-    -fx-text-fill: white;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 13px;
-}
-/*Button{*/
-/*    -fx-border-color: red;*/
-/*    -fx-background-color: black;*/
-/*    -fx-text-fill: white;*/
-/*    -fx-border-width: 2px;*/
-/*    -fx-border-radius: 10px;*/
-/*    -fx-background-radius: 13px;*/
-/*}*/
-
 .Button {
-    -fx-background-color: #383C3F;
-    -fx-text-fill: white;
+    -fx-background-color: #212121;
+    -fx-text-fill: #ffff;
     -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 13px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+}
+
+.Button:hover{
+    /*-fx-background-color: #454545;*/
+    -fx-background-color: #24DE66;
+    -fx-text-fill: #111111;
+}
+
+.Button:pressed{
+    -fx-text-fill: #111111;
+    -fx-background-color: #7fd9a5;
 }
 
 .pane {
-    -fx-background-color: #313234;
+    -fx-background-color: #111111;
 
 }
 
-.ButtonEqual {
-    -fx-background-color: #C9C592;
-    -fx-text-fill: #383C3F;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 13px;
-}
-
-.ButtonNumber {
-    -fx-background-color: #44494D;
-    -fx-text-fill: white;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 13px;
+.welcomePageText {
+    -fx-text-fill: #24DE66;
 }
