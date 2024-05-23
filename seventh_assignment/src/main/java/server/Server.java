@@ -1,3 +1,5 @@
+package server;
+
 // Server Class
 public class Server {
     // TODO: Implement the server-side operations
