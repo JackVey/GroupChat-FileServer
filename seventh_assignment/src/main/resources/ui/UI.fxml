@@ -24,7 +24,7 @@
             <Font name="DejaVu Sans Bold" size="16.0" />
          </font>
       </Label>
-      <Button layoutX="828.0" layoutY="376.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" styleClass="Button" text="Start Chat">
+      <Button layoutX="828.0" layoutY="376.0" mnemonicParsing="false" onAction="#onStartChatButtonClick" prefHeight="100.0" prefWidth="300.0" styleClass="Button" text="Start Chat">
          <font>
             <Font size="28.0" />
          </font>
