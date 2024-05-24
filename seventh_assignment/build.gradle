@@ -37,9 +37,13 @@ javafx {
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.2')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-
+    implementation("com.jfoenix:jfoenix:9.0.10")
+    implementation("de.jensd:fontawesomefx-commons:9.1.2")
+    implementation("de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2")
+    implementation("de.jensd:fontawesomefx-emojione:3.1.1-9.1.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
 test {
