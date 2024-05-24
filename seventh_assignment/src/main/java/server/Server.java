@@ -1,12 +1,48 @@
 package server;
 
+import client.ClientHandler;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 // Server Class
 public class Server {
-    // TODO: Implement the server-side operations
 
-    // TODO: Add constructor and necessary methods
+    private ServerSocket serverSocket;
 
-    public static void main(String[] args) {
-        // TODO: Implement the main method to start the server
+    public Server(ServerSocket serverSocket){
+        this.serverSocket = serverSocket;
+    }
+
+    public void startServer(){
+        try {
+            while (!serverSocket.isClosed()){
+                Socket socket = serverSocket.accept();
+                System.out.println("A client has connected!");
+                ClientHandler clientHandler = new ClientHandler(socket);
+
+                Thread thread = new Thread(clientHandler);
+                thread.start();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void closeEverything(){
+        try {
+            if (serverSocket != null){
+                serverSocket.close();
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(8888);
+        Server server = new Server(serverSocket);
+        server.startServer();
     }
 }
