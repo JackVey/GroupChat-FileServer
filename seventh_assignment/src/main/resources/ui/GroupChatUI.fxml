@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.UIController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChatController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1285.0" pickOnBounds="true">
+         <image>
+            <Image url="@photos/ChatBackground.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutY="670.0" prefHeight="50.0" prefWidth="1285.0" styleClass="text-field-pane" stylesheets="@GroupChatUI.css">
+         <children>
+            <TextField fx:id="chat_field" layoutX="8.0" layoutY="8.0" prefHeight="34.0" prefWidth="1216.0" promptText="Write a message..." styleClass="text-field" stylesheets="@GroupChatUI.css">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <Button fx:id="send_button" layoutX="1235.0" layoutY="8.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button" />
+         </children>
+      </Pane>
+      <ScrollPane fx:id="chat_pane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="60.0" prefHeight="610.0" prefWidth="1286.0" styleClass="chat-box" stylesheets="@GroupChatUI.css">
+         <content>
+            <VBox fx:id="vbox_messages" prefHeight="607.0" prefWidth="1250.0" styleClass="chat-box" translateX="15.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="40.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button" />
+   </children>
 </AnchorPane>
