@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DownloadPageController">
    <children>
       <ListView fx:id="files_list" layoutY="80.0" prefHeight="640.0" prefWidth="350.0" styleClass="files-list" stylesheets="@DownloadPageUI.css" />
-      <HBox fx:id="files_list_header" prefHeight="80.0" prefWidth="350.0" styleClass="files-list-header" stylesheets="@DownloadPageUI.css">
+      <HBox prefHeight="80.0" prefWidth="350.0" styleClass="files-list-header" stylesheets="@DownloadPageUI.css">
          <children>
             <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="37.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button">
                <HBox.margin>
@@ -32,7 +32,7 @@
       </HBox>
       <VBox alignment="TOP_CENTER" layoutX="350.0" prefHeight="720.0" prefWidth="930.0" styleClass="download-box" stylesheets="@DownloadPageUI.css">
          <children>
-            <Label text="Choose a file to download" textFill="#24de66">
+            <Label fx:id="file_label" text="Choose a file to download" textFill="#24de66">
                <VBox.margin>
                   <Insets top="250.0" />
                </VBox.margin>

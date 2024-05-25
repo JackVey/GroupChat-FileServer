@@ -23,13 +23,19 @@
     -fx-border-color: #24DE66;
 
     -fx-text-fill: #24DE66;
+    -fx-alignment: center;
 }
 
-.files-list .list-cell:hover {
+.files-list .list-cell:empty {
+    -fx-border-width: 0px 0px 0px 0px;
+    -fx-background-color: #121212;
+}
+
+.files-list .list-cell:filled:hover {
     -fx-background-color: #313131;
 }
 
-.files-list .list-cell:selected {
+.files-list .list-cell:filled:selected {
     -fx-background-color: #24DE66;
 
     -fx-text-fill: #121212;
