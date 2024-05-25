@@ -15,7 +15,7 @@
       <ListView fx:id="files_list" layoutY="80.0" prefHeight="640.0" prefWidth="350.0" styleClass="files-list" stylesheets="@DownloadPageUI.css" />
       <HBox fx:id="files_list_header" prefHeight="80.0" prefWidth="350.0" styleClass="files-list-header" stylesheets="@DownloadPageUI.css">
          <children>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button">
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="37.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button">
                <HBox.margin>
                   <Insets left="30.0" top="25.0" />
                </HBox.margin>
@@ -30,16 +30,24 @@
             </Label>
          </children>
       </HBox>
-      <VBox layoutX="350.0" prefHeight="720.0" prefWidth="930.0" styleClass="download-box" stylesheets="@DownloadPageUI.css">
+      <VBox alignment="TOP_CENTER" layoutX="350.0" prefHeight="720.0" prefWidth="930.0" styleClass="download-box" stylesheets="@DownloadPageUI.css">
          <children>
             <Label text="Choose a file to download" textFill="#24de66">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="250.0" />
                </VBox.margin>
                <font>
                   <Font name="DejaVu Sans Bold" size="30.0" />
                </font>
             </Label>
+            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="142.0" styleClass="Button" text="Download">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>
