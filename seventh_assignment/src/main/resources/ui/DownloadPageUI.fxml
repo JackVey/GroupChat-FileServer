@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.DownloadPageController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DownloadPageController">
+   <children>
+      <ListView fx:id="files_list" layoutY="80.0" prefHeight="640.0" prefWidth="350.0" styleClass="files-list" stylesheets="@DownloadPageUI.css" />
+      <HBox fx:id="files_list_header" prefHeight="80.0" prefWidth="350.0" styleClass="files-list-header" stylesheets="@DownloadPageUI.css">
+         <children>
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="37.0" styleClass="send-button" stylesheets="@GroupChatUI.css" text="Button">
+               <HBox.margin>
+                  <Insets left="30.0" top="25.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="Files list" textAlignment="CENTER" textFill="#24de66">
+               <HBox.margin>
+                  <Insets left="60.0" top="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="350.0" prefHeight="720.0" prefWidth="930.0" styleClass="download-box" stylesheets="@DownloadPageUI.css">
+         <children>
+            <Label text="Choose a file to download" textFill="#24de66">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
