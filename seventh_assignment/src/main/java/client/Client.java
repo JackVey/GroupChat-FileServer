@@ -1,9 +1,10 @@
 package client;
 
+import javafx.scene.layout.VBox;
+import ui.ChatController;
+
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 // Client Class
 public class Client {
@@ -11,27 +12,29 @@ public class Client {
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String userName;
-    public Client(Socket socket, String userName){
+    private VBox vbox_messages;
+    public Client(Socket socket, String userName, VBox vBox){
         try {
             this.socket = socket;
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.userName = userName;
+
+            this.vbox_messages = vBox;
+
+            //passing the username via socket to client handler
+            bufferedWriter.write(userName);
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+
         } catch (IOException e) {
             closeEverything();
         }
     }
 
-    public void sendMessage(){
-        //TODO -> gotta get the message from the text field and send it here
+    public void sendMessage(String messageToSend){
         try {
-            bufferedWriter.write(userName);
-            bufferedWriter.newLine();
-            bufferedWriter.flush();
-
-            Scanner scanner = new Scanner(System.in);
-            while (socket.isConnected()){
-                String messageToSend = scanner.nextLine();
+            if (socket.isConnected()){
                 bufferedWriter.write(userName + ": " + messageToSend);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
@@ -51,27 +54,25 @@ public class Client {
                     try {
                         messageFromClient = bufferedReader.readLine();
                         //TODO -> here i have to show it in GUI
+                        ChatController.addMessageToVbox(messageFromClient, vbox_messages);
                         System.out.println(messageFromClient);
                     }
                     catch (IOException e){
                         closeEverything();
                     }
                 }
+                closeEverything();
+                System.out.println("Client" + userName + "has stopped");
             }
         }).start();
     }
 
     public void closeEverything(){
+        sendMessage("[CODE:404]" + userName + " has left the chat!");
         try {
-            if (bufferedWriter != null){
-                bufferedWriter.close();
-            }
-            if (bufferedReader != null){
-                bufferedReader.close();
-            }
-            if (socket != null){
-                socket.close();
-            }
+            bufferedWriter.close();
+            bufferedReader.close();
+            socket.close();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -79,13 +80,6 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter you name: ");
-        // TODO -> gotta get client username first
-        String username = scanner.nextLine();
-        Socket socket = new Socket("localhost", 8888);
-        Client client = new Client(socket, username);
-        client.listenForMessages();
-        client.sendMessage();
+
     }
 }

@@ -1,5 +1,8 @@
 package client;
 
+
+import file.FileHandler;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,11 +18,12 @@ public class ClientHandler implements Runnable{
             this.socket = socket;
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            //TODO -> have to get the clients name somehow
+            //the username will be passed here from client constructor
             this.userName = bufferedReader.readLine();
             addClientHandler(this);
             //TODO -> have to broad cast that this user has entered the chat
-            broadcastMessage(userName + " has joined the chat!");
+            broadcastMessage("[CODE:404]" + userName + " has joined the chat!");
+
         } catch (Exception e) {
             closeEverything();
         }
@@ -42,11 +46,13 @@ public class ClientHandler implements Runnable{
                 closeEverything();
             }
         }
+
+        FileHandler.writeMessage(messageToSend);
     }
 
     public void removeClientHandler(){
         clientHandlers.remove(this);
-        broadcastMessage(userName + " has left the chat!");
+        broadcastMessage("[CODE:404]"+ userName + " has left the chat!");
     }
 
     public void closeEverything(){
@@ -81,5 +87,7 @@ public class ClientHandler implements Runnable{
                 break;
             }
         }
+        closeEverything();
+        System.out.println("Client Handler has stopped");
     }
 }
