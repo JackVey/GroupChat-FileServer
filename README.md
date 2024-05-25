@@ -1,4 +1,4 @@
-# Socket Programming Assignment - Group Chat(💬) + File Transfer (📁)
+# Socket Programming Assignment - Group Chat(💬) + file Transfer (📁)
 
 ## Table of Contents 🍽️
 
@@ -6,7 +6,7 @@
 2. [Objectives](#objectives-)
 3. [Assignment Overview](#assignment-overview-)
    - [Task 1: Group Chat (Sending Text Messages)](#task-1-group-chat-sending-text-messages-)
-   - [Task 2: File Transfer (Downloading Text Files from the Server)](#task-2-file-transfer-downloading-text-files-from-the-server-)
+   - [Task 2: file Transfer (Downloading Text Files from the Server)](#task-2-file-transfer-downloading-text-files-from-the-server-)
         - [Application's `Client-Server API`](#applications-client-server-api-)
 5. [Notes](#notes-)
 6. [Getting Started](#getting-started-)
@@ -39,7 +39,7 @@ So this means that if a new client is connected to the server, he must be able t
 - designing server and client side of the application in a way that users can comminate with each other through a group chat with the feature that newly joined members can see either a portion or all of the previous chats (massages sent before them joining the group chat)
 
 
-### Task 2: File Transfer (Downloading Text Files from the Server) 📁
+### Task 2: file Transfer (Downloading Text Files from the Server) 📁
 In this task, you will extend the functionality of the application you designed to allow clients to download text files from the server.Thus the client should be able to view a list of the available files on the server and select one for download. Once the file is downloaded, it should be **copied** (**NOT cut**) to a directory related specifically to the client who sent the request to download the file. (In other words, the file must be transferred though a socket from the server side to the client side can be saved somewhere on the client side)
 
 Also, you must design the **client-server API** of this project which is explained below: 
