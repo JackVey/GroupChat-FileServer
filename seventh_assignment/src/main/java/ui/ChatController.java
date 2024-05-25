@@ -1,11 +1,8 @@
 package ui;
 
 import client.Client;
+import file.FileHandler;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,14 +17,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.stage.Popup;
-
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 public class ChatController implements Initializable {
     @FXML
@@ -40,93 +35,113 @@ public class ChatController implements Initializable {
     private TextField chat_field;
     private Client client;
     @FXML
-    protected void onStartChatButtonClick() throws IOException {
+    protected void onBackButtonClick() throws IOException {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("mainPageUI.fxml")), 1280, 720);
+        UIApplication.stage.setScene(scene);
+        if (client != null) {
+            client.closeEverything();
+        }
+    }
+    public static void addMessageToVbox(String messageFromClient, VBox vBox){
+        HBox hBox = new HBox();
+        hBox.setPadding(new Insets(5, 5, 5, 5));
+
+
+        if (messageFromClient.contains("[CODE:404]")) {
+            hBox.setAlignment(Pos.CENTER);
+
+            TextFlow textFlow = new TextFlow(new Text(messageFromClient.substring(messageFromClient.indexOf("[CODE:404]") + 10)));
+
+            textFlow.setId("server_message");
+
+            textFlow.setPadding(new Insets(10, 15, 10, 15));
+            hBox.getChildren().add(textFlow);
+        }
+        else {
+            hBox.setAlignment(Pos.CENTER_LEFT);
+
+            TextFlow textFlow = new TextFlow(new Text(messageFromClient));
+
+            textFlow.setId("others_messages");
+
+            textFlow.setPadding(new Insets(10, 15, 10, 15));
+            hBox.getChildren().add(textFlow);
+        }
+
+
+        Platform.runLater(() -> vBox.getChildren().add(hBox));
+    }
+
+    public String getInputFromTheBox(){
+        String username = "";
+        TextInputDialog td = new TextInputDialog();
+        td.setTitle("Input Dialog");
+        td.setHeaderText("Please enter your name to enter the chat:");
+        Optional<String> result = td.showAndWait();
+        if(result.isPresent()){
+            username = result.get();
+            if (username.isEmpty() || username.isBlank()){
+                username = "Anonymous";
+            }
+        }else {
+            try {
+                onBackButtonClick();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return username;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         String username = getInputFromTheBox();
         System.out.println(username);
         try {
             Socket socket = new Socket("localhost", 8888);
-            client = new Client(socket, username);
+            client = new Client(socket, username, vbox_messages);
+            client.listenForMessages();
         }
         catch (IOException e){
             e.printStackTrace();
             System.out.println("Error in creating server");
         }
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("GroupChatUI.fxml")), 1280, 720);
-        UIApplication.stage.setScene(scene);
-
         vbox_messages.heightProperty().addListener((observable, oldValue, newValue) -> chat_pane.setVvalue((Double) newValue));
-
-        //TODO -> have to make a listener to my client handler
 
         send_button.setOnAction(actionEvent -> {
             String messageToSend = chat_field.getText();
             if (!messageToSend.isEmpty()){
                 HBox hBox = new HBox();
                 hBox.setAlignment(Pos.CENTER_RIGHT);
-                hBox.setPadding(new Insets(5, 5, 5, 10));
+                hBox.setPadding(new Insets(5, 5, 5, 5));
 
                 TextFlow textFlow = new TextFlow(new Text(messageToSend));
+
                 textFlow.setId("my_messages");
 
-                textFlow.setPadding(new Insets(5, 10, 5, 10));
-                //TODO -> have to set textFlow color
+                textFlow.setPadding(new Insets(10, 15, 10, 15));
 
                 hBox.getChildren().add(textFlow);
                 vbox_messages.getChildren().add(hBox);
 
-                //TODO -> have to broad cast the 'messageToSend'
+                client.sendMessage(messageToSend);
 
                 chat_field.clear();
             }
         });
 
-    }
-    @FXML
-    protected void onBackButtonClick() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("mainPageUI.fxml")), 1280, 720);
-        UIApplication.stage.setScene(scene);
-    }
-
-    public static void addMessageToVbox(String messageFromClient, VBox vBox){
-        HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER_RIGHT);
-        hBox.setPadding(new Insets(5, 5, 5, 10));
-
-        TextFlow textFlow = new TextFlow(new Text(messageFromClient));
-        textFlow.setId("my_messages");
-
-        textFlow.setPadding(new Insets(5, 10, 5, 10));
-        //TODO -> have to set textFlow color
-
-        hBox.getChildren().add(textFlow);
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vBox.getChildren().add(hBox);
+        int numberOfTheMessagesToShow = 50;
+        ArrayList<String> messages = FileHandler.readMessages();
+        if (messages.size() < numberOfTheMessagesToShow){
+            for (String i : messages){
+                addMessageToVbox(i, vbox_messages);
             }
-        });
-    }
-
-    public String getInputFromTheBox(){
-        String[] username = new String[1];
-        TextInputDialog td = new TextInputDialog();
-        td.setTitle("Input Dialog");
-        td.setHeaderText("Please enter your name:");
-        td.showAndWait().ifPresent(new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                username[0] = s;
+        }else {
+            for (int i = messages.size() - numberOfTheMessagesToShow; i <= messages.size() - 1; i++){
+                addMessageToVbox(messages.get(i), vbox_messages);
             }
-        });
-        return username[0];
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
+        }
     }
 
 }
