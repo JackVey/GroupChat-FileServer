@@ -40,7 +40,7 @@
                   <Font name="DejaVu Sans Bold" size="30.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="142.0" styleClass="Button" text="Download">
+            <Button mnemonicParsing="false" onAction="#onDownloadButtonClick" prefHeight="54.0" prefWidth="142.0" styleClass="Button" text="Download">
                <font>
                   <Font name="DejaVu Sans Bold" size="18.0" />
                </font>
