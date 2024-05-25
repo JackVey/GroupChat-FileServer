@@ -17,12 +17,16 @@ public class ClientHandler implements Runnable{
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             //TODO -> have to get the clients name somehow
             this.userName = bufferedReader.readLine();
-            clientHandlers.add(this);
+            addClientHandler(this);
             //TODO -> have to broad cast that this user has entered the chat
             broadcastMessage(userName + " has joined the chat!");
         } catch (Exception e) {
             closeEverything();
         }
+    }
+
+    public synchronized void addClientHandler(ClientHandler clientHandler){
+        clientHandlers.add(this);
     }
 
     public void broadcastMessage(String messageToSend){
