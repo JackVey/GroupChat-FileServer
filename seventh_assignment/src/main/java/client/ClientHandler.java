@@ -2,25 +2,27 @@ package client;
 
 
 import file.FileHandler;
+import server.Server;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandler implements Runnable{
-    public static ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
     private Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String userName;
-    public ClientHandler(Socket socket){
+    private ArrayList<ClientHandler> clientHandlers;
+    public ClientHandler(Socket socket, ArrayList<ClientHandler> clientHandlers){
         try {
             this.socket = socket;
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             //the username will be passed here from client constructor
+            this.clientHandlers = clientHandlers;
             this.userName = bufferedReader.readLine();
-            addClientHandler(this);
+//            addClientHandler(this);
             //TODO -> have to broad cast that this user has entered the chat
             broadcastMessage("[CODE:404]" + userName + " has joined the chat!");
 
@@ -29,17 +31,19 @@ public class ClientHandler implements Runnable{
         }
     }
 
-    public synchronized void addClientHandler(ClientHandler clientHandler){
-        clientHandlers.add(this);
-    }
+//    public void addClientHandler(ClientHandler clientHandler){
+//        clientHandlers.add(clientHandler);
+//    }
 
     public void broadcastMessage(String messageToSend){
         for (ClientHandler clientHandler : clientHandlers){
             try {
                 if (!clientHandler.equals(this)){
-                    clientHandler.bufferedWriter.write(messageToSend);
-                    clientHandler.bufferedWriter.newLine();
-                    clientHandler.bufferedWriter.flush();
+                    if (clientHandler.socket.isConnected() && !clientHandler.socket.isClosed()) {
+                        clientHandler.bufferedWriter.write(messageToSend);
+                        clientHandler.bufferedWriter.newLine();
+                        clientHandler.bufferedWriter.flush();
+                    }
                 }
             }
             catch (IOException e){
@@ -50,10 +54,18 @@ public class ClientHandler implements Runnable{
         FileHandler.writeMessage(messageToSend);
     }
 
-    public void removeClientHandler(){
+    public synchronized void removeClientHandler(){
         clientHandlers.remove(this);
         broadcastMessage("[CODE:404]"+ userName + " has left the chat!");
     }
+
+//    public synchronized static void removeClientHandler(Client client){
+//       for (int i = 0; i < clientHandlers.size(); i++){
+//            if (clientHandlers.get(i).socket.equals(client.socket)){
+//                clientHandlers.remove(i);
+//            }
+//        }
+//    }
 
     public void closeEverything(){
         removeClientHandler();

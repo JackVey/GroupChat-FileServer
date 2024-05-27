@@ -7,7 +7,6 @@
 }
 
 .Button:hover{
-    /*-fx-background-color: #454545;*/
     -fx-background-color: #24DE66;
     -fx-text-fill: #111111;
 }
@@ -48,4 +47,6 @@
 
 .text-area .text {
     -fx-text-alignment: center;
+    -fx-font-family: "DejaVu Sans";
+    -fx-font-style: bold;
 }

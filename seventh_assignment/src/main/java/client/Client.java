@@ -8,7 +8,7 @@ import java.net.Socket;
 
 // Client Class
 public class Client {
-    private Socket socket;
+    public Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String userName;
@@ -34,7 +34,7 @@ public class Client {
 
     public void sendMessage(String messageToSend){
         try {
-            if (socket.isConnected()){
+            if (!socket.isClosed()){
                 bufferedWriter.write(userName + ": " + messageToSend);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();

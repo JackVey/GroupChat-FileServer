@@ -1,6 +1,7 @@
 package ui;
 
 import client.Client;
+import client.ClientHandler;
 import file.FileHandler;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -39,6 +40,7 @@ public class ChatController implements Initializable {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("mainPageUI.fxml")), 1280, 720);
         UIApplication.stage.setScene(scene);
         if (client != null) {
+//            ClientHandler.removeClientHandler(client);
             client.closeEverything();
         }
     }

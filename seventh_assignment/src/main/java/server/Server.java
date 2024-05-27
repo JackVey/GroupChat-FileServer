@@ -4,10 +4,12 @@ import client.ClientHandler;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 // Server Class
 public class Server {
 
+    public static ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
     private final ServerSocket serverSocket;
 
     public Server(ServerSocket serverSocket){
@@ -20,8 +22,8 @@ public class Server {
                 while (!serverSocket.isClosed()) {
                     Socket socket = serverSocket.accept();
                     System.out.println("A client has connected!");
-                    ClientHandler clientHandler = new ClientHandler(socket);
-
+                    ClientHandler clientHandler = new ClientHandler(socket, clientHandlers);
+                    clientHandlers.add(clientHandler);
                     Thread thread = new Thread(clientHandler);
                     thread.start();
                 }
