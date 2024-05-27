@@ -25,3 +25,27 @@
 .welcomePageText {
     -fx-text-fill: #24DE66;
 }
+
+.text-field {
+    -fx-background-color: black;
+    -fx-text-fill: White;
+    -fx-border-color: #24DE66;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-font-family: "DejaVu Sans";
+}
+
+.text-area {
+    -fx-background-color: transparent;
+    -fx-font-family: "DejaVu Sans";
+    -fx-text-alignment: center;
+    -fx-prompt-text-fill: #24DE66;
+}
+
+.text-area .content, .text-area .viewport, .text-area{
+    -fx-background-color: transparent;
+}
+
+.text-area .text {
+    -fx-text-alignment: center;
+}
