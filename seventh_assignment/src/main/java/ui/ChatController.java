@@ -72,31 +72,10 @@ public class ChatController implements Initializable {
         Platform.runLater(() -> vBox.getChildren().add(hBox));
     }
 
-    public String getInputFromTheBox(){
-        String username = "";
-        TextInputDialog td = new TextInputDialog();
-        td.setTitle("Input Dialog");
-        td.setHeaderText("Please enter your name to enter the chat:");
-        Optional<String> result = td.showAndWait();
-        if(result.isPresent()){
-            username = result.get();
-            if (username.isEmpty() || username.isBlank()){
-                username = "Anonymous";
-            }
-        }else {
-            try {
-                onBackButtonClick();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return username;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String username = getInputFromTheBox();
-        System.out.println(username);
+        String username = MainPageController.getUserName();
         try {
             Socket socket = new Socket("localhost", 8888);
             client = new Client(socket, username, vbox_messages);
