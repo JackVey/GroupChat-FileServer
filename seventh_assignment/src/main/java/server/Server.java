@@ -25,7 +25,7 @@ public class Server {
                     clientHandlers.add(clientHandler);
                     Thread thread = new Thread(clientHandler);
                     thread.start();
-                    System.out.println("[SERVER]: Client " + clientHandler.userName + " has disconnected to chat");
+                    System.out.println("[SERVER]: Client " + clientHandler.userName + " has connected to chat");
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -39,7 +39,7 @@ public class Server {
                 while (!serverSocket.isClosed()) {
                     Socket socket = serverSocket.accept();
                     API api = new API(socket);
-                    System.out.println("[SERVER]: A client has disconnected to file server");
+                    System.out.println("[SERVER]: A client has connected to file server");
                     Thread thread = new Thread(api);
                     thread.start();
                 }
