@@ -21,11 +21,11 @@ public class Server {
             try {
                 while (!serverSocket.isClosed()) {
                     Socket socket = serverSocket.accept();
-                    System.out.println("A client has connected!");
                     ClientHandler clientHandler = new ClientHandler(socket, clientHandlers);
                     clientHandlers.add(clientHandler);
                     Thread thread = new Thread(clientHandler);
                     thread.start();
+                    System.out.println("[SERVER]: Client " + clientHandler.userName + " has disconnected");
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

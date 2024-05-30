@@ -73,6 +73,7 @@ public class Client {
             bufferedWriter.close();
             bufferedReader.close();
             socket.close();
+            System.out.println("[SERVER]: Client " + userName + " has disconnected");
         }
         catch (IOException e){
             e.printStackTrace();

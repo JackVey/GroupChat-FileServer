@@ -12,7 +12,7 @@ public class ClientHandler implements Runnable{
     private Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
-    private String userName;
+    public String userName;
     private ArrayList<ClientHandler> clientHandlers;
     public ClientHandler(Socket socket, ArrayList<ClientHandler> clientHandlers){
         try {
