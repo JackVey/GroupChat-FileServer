@@ -77,12 +77,21 @@ My Gmail - varin.rain3@gmail.com
 > [!WARNING]
 > You are going to be unable to run the application if you do not import java fx into project properly.
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/JackVey/2048.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/all-contributors/JackVey/GroupChat-FileServer?style=for-the-badge&logo=github
 [contributors-url]: https://github.com/JackVey/GroupChat-FileServer/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/JackVey/2048.svg?style=for-the-badge
-[forks-url]: https://github.com/JackVey/GroupChat-FileServer/network/members
+[forks-shield]: https://img.shields.io/github/forks/JackVey/GroupChat-FileServer?style=for-the-badge&logo=github
+[forks-url]: https://github.com/JackVey/GroupChat-FileServer/forks
 [stars-shield]: https://img.shields.io/github/stars/JackVey/2048.svg?style=for-the-badge
 [stars-url]: https://github.com/JackVey/GroupChat-FileServer/stargazers
 [issues-shield]: https://img.shields.io/github/issues/JackVey/2048.svg?style=for-the-badge
