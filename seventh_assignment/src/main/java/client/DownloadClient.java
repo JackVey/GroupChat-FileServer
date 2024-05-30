@@ -27,20 +27,22 @@ public class DownloadClient {
 
         try {
             bufferedWriter.write(jsonRequest.toString());
-            jsonRequest = new JSONObject(bufferedReader.readLine());
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+
+//            jsonRequest = new JSONObject(bufferedReader.readLine());
+//
+//            bufferedWriter.write(jsonRequest.toString());
+//            bufferedWriter.newLine();
+//            bufferedWriter.flush();
+//
+//            if (jsonRequest.get("response").equals("file is ready to send")){
+//                jsonRequest.clear();
+//                jsonRequest.put("request", "send the file");
+//            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-
-        if (jsonRequest.get("response").equals("file is ready to send")){
-            jsonRequest.clear();
-            jsonRequest.put("request", "send the file");
-            try {
-                bufferedWriter.write(jsonRequest.toString());
-            }
-            catch (IOException e){
-                throw new RuntimeException(e);
-            }
         }
         receiveFile();
     }
@@ -57,7 +59,9 @@ public class DownloadClient {
             int fileContentLength = dataInputStream.readInt();
 
             byte[] fileContentBytes = new byte[fileContentLength];
+
             dataInputStream.readFully(fileContentBytes, 0, fileContentLength);
+            saveFile(fileNameString, fileContentBytes);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

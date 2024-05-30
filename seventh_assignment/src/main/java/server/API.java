@@ -30,16 +30,19 @@ public class API implements Runnable{
             request = new JSONObject(bufferedReader.readLine());
             if (request.get("request").equals("download")){
                 filename = request.getString("filename");
-            }
-            if (!filename.isEmpty() || !filename.isBlank()){
-                if(FileHandler.checkIfFileExist(filename)){
-                    sendResponse("file is ready to send");
+                if(FileHandler.checkIfFileExist(filename)) {
+                    sendFile(filename);
                 }
             }
-            request = new JSONObject(bufferedReader.readLine());
-            if (request.get("request").equals("send the file")){
-                sendFile(filename);
-            }
+//            if (!filename.isEmpty() || !filename.isBlank()){
+//                if(FileHandler.checkIfFileExist(filename)){
+//                    sendResponse("file is ready to send");
+//                }
+//            }
+//            request = new JSONObject(bufferedReader.readLine());
+//            if (request.get("request").equals("send the file")){
+//                sendFile(filename);
+//            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -49,6 +52,8 @@ public class API implements Runnable{
         jsonResponse.put("response", response);
         try {
             bufferedWriter.write(jsonResponse.toString());
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,6 +76,7 @@ public class API implements Runnable{
     @Override
     public void run() {
         while(!socket.isClosed()){
+            System.out.println("1");
             handleRequest();
         }
         System.out.println("[SERVER]: A client has disconnected from file server");
