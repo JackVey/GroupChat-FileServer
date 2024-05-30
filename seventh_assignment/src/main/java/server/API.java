@@ -73,7 +73,8 @@ public class API implements Runnable{
     @Override
     public void run() {
         while(!socket.isClosed()){
-
+            handleRequest();
         }
+        System.out.println("[SERVER]: A client has disconnected from file server");
     }
 }
