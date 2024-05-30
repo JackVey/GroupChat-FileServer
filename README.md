@@ -63,6 +63,15 @@ This project aims to create a simple **Group Chat Application** that uses **TCP 
 ```
 6. First Start the server and then the UIApplication
 7. Enjoy!
+## Contributors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+[@ranarokni](https://github.com/ranarokni)
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
@@ -76,15 +85,6 @@ My Gmail - varin.rain3@gmail.com
 > Do not skip how to use steps!.
 > [!WARNING]
 > You are going to be unable to run the application if you do not import java fx into project properly.
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
