@@ -1,5 +1,6 @@
 package server;
 
+import file.FileHandler;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -24,17 +25,36 @@ public class API implements Runnable{
         }
     }
 
-    private void readRequest(){
+    private void handleRequest(){
+        String filename = "";
+        JSONObject request;
         try {
-            JSONObject request = new JSONObject(bufferedReader.readLine());
+            request = new JSONObject(bufferedReader.readLine());
             if (request.get("request").equals("download")){
-                String filename = request.getString("filename");
+                filename = request.getString("filename");
+            }
+            if (!filename.isEmpty() || !filename.isBlank()){
+                if(FileHandler.checkIfFileExist(filename)){
+                    sendResponse("file is ready to send");
+                }
+            }
+            request = new JSONObject(bufferedReader.readLine());
+            if (request.get("request").equals("send the file")){
+                sendFile(filename);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
+    private void sendResponse(String response){
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("response", response);
+        try {
+            bufferedWriter.write(jsonResponse.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void run() {
         while(!socket.isClosed()){
