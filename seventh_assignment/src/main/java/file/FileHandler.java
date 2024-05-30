@@ -72,4 +72,21 @@ public class FileHandler {
         }
         return false;
     }
+
+    public static byte[] readFileNameByte(String filename){
+        return filename.getBytes();
+    }
+
+    public static byte[] readFileContentByte(String filename){
+        try {
+            File fileToRead = new File(DATA_FILE_ADDRESS + filename);
+            FileInputStream fileInputStream = new FileInputStream(DATA_FILE_ADDRESS + filename);
+            byte[] fileContent = new byte[(int) fileToRead.length()];
+            fileInputStream.read(fileContent);
+            fileInputStream.close();
+            return fileContent;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
