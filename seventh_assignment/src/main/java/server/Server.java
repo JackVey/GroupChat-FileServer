@@ -38,7 +38,8 @@ public class Server {
             try {
                 while (!serverSocket.isClosed()) {
                     Socket socket = serverSocket.accept();
-                    System.out.println("A client has connected!");
+                    API api = new API(socket);
+                    System.out.println("[SERVER]: A client has disconnected to file server");
 
                 }
             } catch (IOException e) {
