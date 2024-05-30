@@ -55,6 +55,21 @@ public class API implements Runnable{
             throw new RuntimeException(e);
         }
     }
+
+    private void sendFile(String filename){
+        byte[] fileNameBytes = FileHandler.readFileNameByte(filename);
+        byte[] fileContentBytes = FileHandler.readFileContentByte(filename);
+
+        try {
+            dataOutputStream.writeInt(fileNameBytes.length);
+            dataOutputStream.write(fileNameBytes);
+
+            dataOutputStream.writeInt(fileContentBytes.length);
+            dataOutputStream.write(fileContentBytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void run() {
         while(!socket.isClosed()){
