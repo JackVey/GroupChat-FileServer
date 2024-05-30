@@ -1,4 +1,8 @@
 package server;
 
-public class API {
+public class API implements Runnable{
+    @Override
+    public void run() {
+
+    }
 }
