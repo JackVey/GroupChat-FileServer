@@ -88,15 +88,15 @@ My Gmail - varin.rain3@gmail.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/all-contributors/JackVey/GroupChat-FileServer?style=for-the-badge&logo=github
+[contributors-shield]: https://img.shields.io/github/contributors/JackVey/GroupChat-FileServer.svg?style=for-the-badge
 [contributors-url]: https://github.com/JackVey/GroupChat-FileServer/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/JackVey/GroupChat-FileServer?style=for-the-badge&logo=github
 [forks-url]: https://github.com/JackVey/GroupChat-FileServer/forks
-[stars-shield]: https://img.shields.io/github/stars/JackVey/2048.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/JackVey/GroupChat-FileServer.svg?style=for-the-badge
 [stars-url]: https://github.com/JackVey/GroupChat-FileServer/stargazers
-[issues-shield]: https://img.shields.io/github/issues/JackVey/2048.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/JackVey/GroupChat-FileServer.svg?style=for-the-badge
 [issues-url]: https://github.com/JackVey/GroupChat-FileServer/issues
-[license-shield]: https://img.shields.io/github/license/Jackvey/2048.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Jackvey/GroupChat-FileServer.svg?style=for-the-badge
 [license-url]: https://github.com/JackVey/GroupChat-FileServer/blob/develop/LICENSE.txt
 [UML.image]: https://github.com/JackVey/GroupChat-FileServer/assets/161158007/abf5688e-ef30-413a-b095-6b1e5a8144cc
 [Java.badge]: https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white
