@@ -66,8 +66,8 @@ This project aims to create a simple **Group Chat Application** that uses **TCP 
 ## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
-[@ranarokni](https://github.com/ranarokni)
 <!-- markdownlint-disable -->
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
