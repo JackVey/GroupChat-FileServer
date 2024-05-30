@@ -40,7 +40,8 @@ public class Server {
                     Socket socket = serverSocket.accept();
                     API api = new API(socket);
                     System.out.println("[SERVER]: A client has disconnected to file server");
-
+                    Thread thread = new Thread(api);
+                    thread.start();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
