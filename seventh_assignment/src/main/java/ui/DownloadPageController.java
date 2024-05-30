@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -29,8 +30,14 @@ public class DownloadPageController implements Initializable {
     @FXML
     public void onDownloadButtonClick() {
         String selectedFileName = "";
-        selectedFileName = files_list.getSelectionModel().getSelectedItem().toString();
-        downloadClient.sendRequest(selectedFileName);
+        Object selectedFile = files_list.getSelectionModel().getSelectedItem();
+        if (selectedFile != null) {
+            selectedFileName = selectedFile.toString();
+            downloadClient.sendRequest(selectedFileName);
+        }else {
+            file_label.setText("Choose a file first!");
+            file_label.setTextFill(Color.color(1, 0 ,0));
+        }
     }
 
 
