@@ -33,6 +33,8 @@ public class API implements Runnable{
                 if(FileHandler.checkIfFileExist(filename)) {
                     sendFile(filename);
                 }
+            } else if (request.get("request").equals("close")) {
+                closeEverything();
             }
 //            if (!filename.isEmpty() || !filename.isBlank()){
 //                if(FileHandler.checkIfFileExist(filename)){
@@ -73,10 +75,19 @@ public class API implements Runnable{
             throw new RuntimeException(e);
         }
     }
+    private void closeEverything(){
+        try {
+            socket.close();
+            bufferedWriter.close();
+            bufferedReader.close();
+            dataOutputStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void run() {
         while(!socket.isClosed()){
-            System.out.println("1");
             handleRequest();
         }
         System.out.println("[SERVER]: A client has disconnected from file server");

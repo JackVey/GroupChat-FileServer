@@ -24,6 +24,7 @@ public class DownloadPageController implements Initializable {
     protected void onBackButtonClick() throws IOException {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("mainPageUI.fxml")), 1280, 720);
         UIApplication.stage.setScene(scene);
+        downloadClient.closeEverything();
     }
     @FXML
     public void onDownloadButtonClick() {
