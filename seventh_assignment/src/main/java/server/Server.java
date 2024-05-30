@@ -66,6 +66,6 @@ public class Server {
         Server chatServer = new Server(chatSocket);
         Server fileServer = new Server(fileSocket);
         chatServer.startChatServer();
-//        fileServer.startFileServer();
+        fileServer.startFileServer();
     }
 }

@@ -28,8 +28,10 @@ public class DownloadPageController implements Initializable {
     @FXML
     public void onDownloadButtonClick() {
         String selectedFileName = "";
-
+        selectedFileName = files_list.getSelectionModel().getSelectedItem().toString();
+        downloadClient.sendRequest(selectedFileName);
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
