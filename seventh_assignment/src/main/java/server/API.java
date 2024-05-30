@@ -1,5 +1,7 @@
 package server;
 
+import org.json.JSONObject;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -22,8 +24,21 @@ public class API implements Runnable{
         }
     }
 
+    private void readRequest(){
+        try {
+            JSONObject request = new JSONObject(bufferedReader.readLine());
+            if (request.get("request").equals("download")){
+                String filename = request.getString("filename");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void run() {
+        while(!socket.isClosed()){
 
+        }
     }
 }
