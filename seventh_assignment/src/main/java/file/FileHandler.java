@@ -1,10 +1,8 @@
 package file;
 
 import org.json.JSONArray;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.locks.Lock;
@@ -15,7 +13,7 @@ public class FileHandler {
     private static final String MESSAGES_FILE_ADDRESS = "C:\\Users\\varin\\Documents\\Intellij\\Seventh-Assignment-Socket-Programming" +
             "\\seventh_assignment\\src\\main\\java\\file\\Files\\messages.txt";
     private static final String DATA_FILE_ADDRESS = "C:\\Users\\varin\\Documents\\Intellij\\Seventh-Assignment-Socket-Programming" +
-            "\\seventh_assignment\\src\\main\\java\\server\\data";
+            "\\seventh_assignment\\src\\main\\java\\server\\data\\";
     private static final Lock lock = new ReentrantLock();
     public static synchronized void writeMessage(String messageToWrite){
         lock.lock();
@@ -68,7 +66,7 @@ public class FileHandler {
     }
 
     public static boolean checkIfFileExist(String filename){
-        File fileToCheck = new File(DATA_FILE_ADDRESS);
+        File fileToCheck = new File(DATA_FILE_ADDRESS + filename);
         if (fileToCheck.exists()){
             return true;
         }
