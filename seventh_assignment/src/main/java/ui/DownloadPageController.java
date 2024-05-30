@@ -1,5 +1,6 @@
 package ui;
 
+import client.DownloadClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +19,7 @@ public class DownloadPageController implements Initializable {
     private ListView files_list;
     @FXML
     private Label file_label;
+    private DownloadClient downloadClient;
     @FXML
     protected void onBackButtonClick() throws IOException {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("mainPageUI.fxml")), 1280, 720);
@@ -24,6 +27,7 @@ public class DownloadPageController implements Initializable {
     }
     @FXML
     public void onDownloadButtonClick() {
+        String selectedFileName = "";
 
     }
 
@@ -35,5 +39,17 @@ public class DownloadPageController implements Initializable {
         , "why-you-wanna-trip-on-me-michael-jackson.txt", "you-put-a-spell-on-me-austin-giorgio.txt"};
 
         files_list.getItems().addAll(fileNames);
+
+        try {
+            Socket socket = new Socket("localhost", 7777);
+            downloadClient = new DownloadClient(socket);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        files_list.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            file_label.setText(newValue.toString());
+        });
+
     }
 }
