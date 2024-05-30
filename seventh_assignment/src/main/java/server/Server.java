@@ -25,7 +25,7 @@ public class Server {
                     clientHandlers.add(clientHandler);
                     Thread thread = new Thread(clientHandler);
                     thread.start();
-                    System.out.println("[SERVER]: Client " + clientHandler.userName + " has disconnected");
+                    System.out.println("[SERVER]: Client " + clientHandler.userName + " has disconnected to chat");
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
