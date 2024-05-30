@@ -79,13 +79,13 @@ My Gmail - varin.rain3@gmail.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/JackVey/GroupChat-FileServer.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/JackVey/GroupChat-FileServer.svg?style=for-the-badge&logo=github
 [contributors-url]: https://github.com/JackVey/GroupChat-FileServer/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/JackVey/GroupChat-FileServer?style=for-the-badge&logo=github
 [forks-url]: https://github.com/JackVey/GroupChat-FileServer/forks
-[stars-shield]: https://img.shields.io/github/stars/JackVey/GroupChat-FileServer.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/JackVey/GroupChat-FileServer.svg?style=for-the-badge&logo=github
 [stars-url]: https://github.com/JackVey/GroupChat-FileServer/stargazers
-[issues-shield]: https://img.shields.io/github/issues/JackVey/GroupChat-FileServer.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/JackVey/GroupChat-FileServer.svg?style=for-the-badge&logo=github
 [issues-url]: https://github.com/JackVey/GroupChat-FileServer/issues
 [license-shield]: https://img.shields.io/github/license/Jackvey/GroupChat-FileServer.svg?style=for-the-badge
 [license-url]: https://github.com/JackVey/GroupChat-FileServer/blob/develop/LICENSE
