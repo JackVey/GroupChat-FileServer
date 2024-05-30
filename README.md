@@ -88,7 +88,7 @@ My Gmail - varin.rain3@gmail.com
 [issues-shield]: https://img.shields.io/github/issues/JackVey/GroupChat-FileServer.svg?style=for-the-badge
 [issues-url]: https://github.com/JackVey/GroupChat-FileServer/issues
 [license-shield]: https://img.shields.io/github/license/Jackvey/GroupChat-FileServer.svg?style=for-the-badge
-[license-url]: https://github.com/JackVey/GroupChat-FileServer/blob/develop/LICENSE.txt
+[license-url]: https://github.com/JackVey/GroupChat-FileServer/blob/develop/LICENSE
 [UML.image]: https://github.com/JackVey/GroupChat-FileServer/assets/161158007/abf5688e-ef30-413a-b095-6b1e5a8144cc
 [Java.badge]: https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white
 [CSS.badge]: https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff
