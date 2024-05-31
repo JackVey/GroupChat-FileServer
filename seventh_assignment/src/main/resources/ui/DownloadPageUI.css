@@ -1,0 +1,64 @@
+.scroll-bar:vertical , .scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #24DE66;
+    -fx-background-radius: 5px;
+}
+
+.files-list-header{
+    -fx-background-color: #121212;
+}
+
+.files-list{
+    -fx-background-color: #121212;
+}
+
+.files-list .list-cell {
+    -fx-background-color: #121212;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #24DE66;
+
+    -fx-text-fill: #24DE66;
+    -fx-alignment: center;
+}
+
+.files-list .list-cell:empty {
+    -fx-border-width: 0px 0px 0px 0px;
+    -fx-background-color: #121212;
+}
+
+.files-list .list-cell:filled:hover {
+    -fx-background-color: #313131;
+}
+
+.files-list .list-cell:filled:selected {
+    -fx-background-color: #24DE66;
+
+    -fx-text-fill: #121212;
+}
+
+.download-box {
+    -fx-background-color: #212121;
+}
+
+.Button {
+    -fx-background-color: #24DE66;
+    -fx-text-fill: #121212;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+}
+
+.Button:hover{
+    -fx-background-color: #59da85;
+    -fx-text-fill: #111111;
+}
+
+.Button:pressed{
+    -fx-text-fill: #24DE66;
+    -fx-background-color: #121212;
+}

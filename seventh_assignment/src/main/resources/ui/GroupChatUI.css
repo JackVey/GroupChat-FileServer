@@ -1,0 +1,116 @@
+.members-pane-header{
+    -fx-background-color: #121212;
+}
+
+.members {
+    -fx-background-color: #121212;
+
+}
+
+#members_pane {
+    -fx-background-color: #121212;
+}
+
+#members_pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical , .scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #24DE66;
+    -fx-background-radius: 5px;
+}
+
+.text-field-pane {
+    -fx-background-color: #212121;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: White;
+    -fx-border-color: #24DE66;
+    -fx-border-radius: 50px;
+}
+
+.send-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+}
+
+#send_button{
+    -fx-background-image: url("photos/send.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+#send_button:pressed {
+    -fx-background-image: url("photos/send-pressed.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+#send_button:hover {
+    -fx-background-image: url("photos/send-hover.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+#backButton {
+    -fx-background-image: url("photos/back.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+#backButton:hover {
+    -fx-background-image: url("photos/back-hover.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+#backButton:pressed {
+    -fx-background-image: url("photos/back-pressed.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+}
+
+.chat-box {
+    -fx-background-color: transparent;
+}
+
+#chat_pane {
+    -fx-background-color: transparent;
+}
+
+#chat_pane .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 10px 3px 10px 3px;
+}
+
+#my_messages {
+    -fx-background-color: #24DE66;
+    -fx-background-radius: 20px 0px 20px 20px;
+
+    -fx-font-size: 18;
+    -fx-font-family: "DejaVu Sans";
+}
+
+#others_messages {
+    -fx-background-color: #deb412;
+    -fx-background-radius: 0px 20px 20px 20px;
+
+    -fx-font-size: 18;
+    -fx-font-family: "DejaVu Sans";
+}
+
+#server_message {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20px;
+
+    -fx-font-size: 12;
+    -fx-font-family: "DejaVu Sans";
+}
